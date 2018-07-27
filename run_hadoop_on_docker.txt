@@ -1,0 +1,63 @@
+Step 1: sudo docker pull sequenceiq/hadoop-docker:2.7.0
+
+# Check image exist locally 
+Step 2: docker images
+
+# Run Hadoop (single node) in docker
+Step 3: docker run -it sequenceiq/hadoop-docker:2.7.0 /etc/bootstrap.sh -bash
+
+# This will start hadoop and you'll be in hadoop-docker shell
+# Check the hadoop nodes are running .
+Step 4: bash-4.1# jps
+
+
+Step 5: bash-4.1# cd $HADOOP_PREFIX
+
+# Run the example to test whether hadoop single node is running fine or not
+# The example will search for all the string start from 'dfs' and is following the the regex. 
+Step 6: bash-4.1# bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar grep input output 'dfs[a-z.]+'
+
+# See the results
+Step 7: bin/hdfs dfs -cat output/*
+
+# Copy the results from HDFS to local
+# This will take output folder we generated while running 
+# the example and copy it to local folder /input which is 
+# available at /root 
+Step 8: bin/hadoop fs -copyToLocal output/ input/
+
+
+
+Ste 9: docker cp foo.txt mycontainer:/foo.txt
+
+
+
+# Delete Files or folder from hdfs
+# Make sure to delete from hdfs where there is no /input/output
+bash-4.1# bin/hadoop fs -rm -r output/
+
+
+
+
+# Hadoop streaming download locally ...
+# curl -O http://central.maven.org/maven2/org/apache/hadoop/hadoop-streaming/2.7.0/hadoop-streaming-2.7.0.jar
+
+
+# command for running hadoop streaming word count job
+bin/hadoop jar hadoop-streaming-2.7.0.jar -file /mapper.py -mapper /mapper.py -file /reducer.py -reducer /reducer.py -input input/ -output output
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
