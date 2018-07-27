@@ -28,9 +28,11 @@ root@ubuntu:~$ docker cp /REPO_DIRECTORY IMAGE_NAME:/usr/local/hadoop/
 ```sh
 bash-4.1# bin/hadoop jar hadoop-streaming-2.7.0.jar -file salary/mapper.py -mapper "python mapper.py" -file salary/reducer.py -reducer "python reducer.py" -input YOUR_INPUT_FOLDER -output output
 ```
-**Note:** You must copy the dataset into hdfs so that each example can work fine. Use the folloeing command to copy the data:
+**Note:** 
+i. You must copy the dataset into hdfs so that each example can work fine. Use the folloeing command to copy the data:
 ```sh
 bash-4.1# bin/hadoop fs -mkdir salary_input_data
 bash-4.1# bin/hadoop fs -copyFromLocal datasets/salarydata.txt salary_input_data/
 ```
+ii. In this case we have run example of a mapreduce program on salary dataset. In order to run other examples, do the changes in the commands in step 4 accordingly.  
 
