@@ -5,7 +5,7 @@ Hadoop word count example is available on many blogs and websites but here I hav
 Use the following steps to make it run yourself:
 1. Download Hadoop on your linux machine. An easy way of working doing is to make a docker image of hadoop by using the following commands. For this you need to instal docker first
 ```sh
-root@ubuntu:~$ docker pull sequenceiq/hadoop-docker:2.7.0 && docker pull sequenceiq/hadoop-docker:2.7.0
+root@ubuntu:~$ docker pull sequenceiq/hadoop-docker:2.7.0  && docker run -it sequenceiq/hadoop-docker:2.7.0 
 ```
 
 2. After performing step 1, you'll be inside the hadoop image and it will be interactive shell just like your terminal. You can now use the following command to check if hadoop nodes are running. `jps` command will return the following results:
